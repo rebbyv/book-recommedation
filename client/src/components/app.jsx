@@ -4,6 +4,17 @@ class App extends React.Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    fetch('http://openlibrary.org/subjects/pride.json')
+      .then((data) => {
+        console.log(data.json())
+        // api to get book cover img
+        //http://covers.openlibrary.org/b/id/967869-M.jpg 
+      })
+      .catch((error) => console.log(error))
+  }
+
+
   render() {
     return (
       <div>
@@ -12,3 +23,5 @@ class App extends React.Component {
     )
   }
 }
+
+ReactDOM.render(<App />, document.getElementById('app'))
