@@ -3,7 +3,8 @@ html {
 }
 
 body {
-  background-color: #2f2f2f;
+  background-color: #252525;
+  color: white;
 }
 
 #header {
@@ -35,11 +36,17 @@ h1 {
   padding: 10px;
   background-color: white;
   z-index: 1;
+  color: black;
+}
+
+h2 {
+  color: black;
 }
 
 h4 {
   margin: 0;
   text-align: right;
+  color: black
 }
 h4:hover {
   cursor: pointer;
@@ -47,6 +54,13 @@ h4:hover {
 
 .search {
   padding: 10px 0px;
+}
+
+#error-msg {
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  padding: 10px
 }
 
 button {
@@ -87,4 +101,42 @@ input {
   border-bottom: 2px solid black;
   font-family: 'Montserrat Alternates', sans-serif;
   font-size: 1em;
+}
+
+
+/* Books display */
+#books {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  margin: auto;
+  justify-content: space-evenly;
+}
+
+.book {
+  padding: 10px;
+  width: 250px;
+  margin: 15px;
+}
+.book:hover {
+  cursor: pointer;
+}
+
+img {
+  width: 175px;
+  height: auto;
+}
+
+#new-search {
+  font-size: 1.5em;
+  width: 15%;
+  margin: 205px auto 15px auto;
+  text-align: center;
+  color: #ff7c4c;
+  padding: 15px;
+}
+#new-search:hover {
+  cursor: pointer;
+  border: 2px solid #ff7c4c;
 }

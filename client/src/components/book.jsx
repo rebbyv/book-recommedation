@@ -1,10 +1,9 @@
 var Book = (props) => {
   return ( 
     <div className='book'>
-      <img alt={props.volumeInfo.title} src={props.imageLinks.thumbnail}></img>
-      <h3>{props.volumeInfo.title}</h3>
-      <p>{props.volumeInfo.description}</p>
-      <p>By {props.volumeInfo.authors[0]}</p>
+      <img alt={props.book.volumeInfo.title} src={props.book.volumeInfo.imageLinks ? props.book.volumeInfo.imageLinks.thumbnail: null}></img>
+      <h3>{props.book.volumeInfo.title}</h3>
+      <p>By {props.book.volumeInfo.authors[0]}</p>
     </div>
   )
 }

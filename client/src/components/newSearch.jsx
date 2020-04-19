@@ -6,7 +6,8 @@ class NewSearch extends React.Component {
       author: null,
       subject: null,
       title: null,
-      queryCount: 1
+      queryCount: 1,
+      invalidSearch: false
     }
     this.changeParam = this.changeParam.bind(this);
     this.changeEntry = this.changeEntry.bind(this);
@@ -35,14 +36,19 @@ class NewSearch extends React.Component {
       author: null,
       subject: null,
       title: null,
-      queryCount: 1
+      queryCount: 1,
+      invalidSearch: false
     })
     this.props.close();
   }
   
   search() {
-    this.props.searchBooks(this.state);
-    this.closeModal();
+    if (!this.state.author && !this.state.title && !this.state.subject) {
+      this.setState({ invalidSearch: true })
+    } else {
+      this.props.searchBooks(this.state);
+      this.closeModal();
+    }
   }
   
 
@@ -52,11 +58,12 @@ class NewSearch extends React.Component {
         <h4 onClick={() => this.closeModal()}> Close &times;</h4>
         <h2>Search by your interests or favorite author</h2>
 
-        <Search changeParam={this.changeParam} changeEntry={this.changeEntry}/>
+        <Search changeParam={this.changeParam} changeEntry={this.changeEntry} key={1}/>
         {this.state.queryCount >= 2 ? <Search changeParam={this.changeParam} changeEntry={this.changeEntry}/>: null}
         {this.state.queryCount >= 3 ? <Search changeParam={this.changeParam} changeEntry={this.changeEntry}/>: null}
         {this.state.queryCount < 3 ? <h4 onClick={() => this.addSearchParam()}>+ Add a search parameter</h4>: null}
   
+        {this.state.invalidSearch ? <p id='error-msg'>* Please enter at least 1 search parameter *</p>:null}
         <button onClick={() => this.search()}>Lookup Books</button>
       </div>
     ) 
