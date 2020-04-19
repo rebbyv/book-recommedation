@@ -1,11 +1,13 @@
 import NewSearch from './newSearch.jsx';
+import Books from './books.jsx';
+import Book from './book.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: null,
-      modal: true
+      books: data,
+      modal: false
     };
   }
 
@@ -21,7 +23,7 @@ class App extends React.Component {
   }
 
   searchBooks(params) {
-    console.log('clicked')
+    this.closeModal()
   }
 
   closeModal() {
@@ -36,7 +38,7 @@ class App extends React.Component {
           <h1>Find your next Book</h1>
         </div>
         {this.state.modal ? <NewSearch searchBooks={this.searchBooks.bind(this)} close={this.closeModal.bind(this)}/>: null}
-
+        {this.state.books? <Books books={this.state.books}/>: null}
         {this.state.books ? <div> + New Search </div>: null}
       </div>
     )

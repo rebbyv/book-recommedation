@@ -13,8 +13,7 @@ class NewSearch extends React.Component {
   }
 
   addSearchParam() {
-    var count = this.state.queryCount + 1;
-    this.setState({ queryCount: count })
+    this.setState({ queryCount: ++this.state.queryCount })
   }
 
   changeParam(e) {
@@ -22,9 +21,9 @@ class NewSearch extends React.Component {
   }
 
   changeEntry(e) {
-    if (this.state === 'author') {
+    if (this.state.param === 'author') {
       this.setState({ author: e.target.value })
-    } else if (this.state === 'tite') {
+    } else if (this.state.param === 'title') {
       this.setState({ title: e.target.value })
     } else {
       this.setState({ subject: e.target.value })
@@ -46,6 +45,7 @@ class NewSearch extends React.Component {
     this.closeModal();
   }
   
+
   render() {
     return (
       <div id='modal'>
@@ -53,11 +53,11 @@ class NewSearch extends React.Component {
         <h2>Search by your interests or favorite author</h2>
 
         <Search changeParam={this.changeParam} changeEntry={this.changeEntry}/>
-        {this.state.queryCount === 2 || this.state.queryCount === 3 ? <Search changeParam={this.changeParam} changeEntry={this.changeEntry}/>: null}
-        {this.state.queryCount === 3 ? <Search changeParam={this.changeParam} changeEntry={this.changeEntry}/>: null}
+        {this.state.queryCount >= 2 ? <Search changeParam={this.changeParam} changeEntry={this.changeEntry}/>: null}
+        {this.state.queryCount >= 3 ? <Search changeParam={this.changeParam} changeEntry={this.changeEntry}/>: null}
         {this.state.queryCount < 3 ? <h4 onClick={() => this.addSearchParam()}>+ Add a search parameter</h4>: null}
   
-        <button onClick={this.search}>Lookup Books</button>
+        <button onClick={() => this.search()}>Lookup Books</button>
       </div>
     ) 
   }
