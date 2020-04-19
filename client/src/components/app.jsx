@@ -20,6 +20,14 @@ class App extends React.Component {
     //   .catch((error) => console.log(error))
   }
 
+  searchBooks(params) {
+    console.log('clicked')
+  }
+
+  closeModal() {
+    this.setState({ modal: false })
+  }
+
 
   render() {
     return (
@@ -27,7 +35,7 @@ class App extends React.Component {
         <div id='header'>
           <h1>Find your next Book</h1>
         </div>
-        {this.state.modal ? <NewSearch />: null}
+        {this.state.modal ? <NewSearch searchBooks={this.searchBooks.bind(this)} close={this.closeModal.bind(this)}/>: null}
 
         {this.state.books ? <div> + New Search </div>: null}
       </div>
