@@ -1,24 +1,35 @@
+import NewSearch from './newSearch.jsx';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      books: null,
+      modal: true
+    };
   }
 
   componentDidMount() {
-    fetch('http://openlibrary.org/subjects/pride.json')
-      .then((data) => {
-        console.log(data.json())
-        // api to get book cover img
-        //http://covers.openlibrary.org/b/id/967869-M.jpg 
-      })
-      .catch((error) => console.log(error))
+    // Google books API https://developers.google.com/books/docs/v1/using#PerformingSearch
+    // GET https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes
+    // keywords- intitle, inauthor, subject
+    // fetch('https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes')
+    //   .then((data) => {
+    //     console.log(data.json())
+    //   })
+    //   .catch((error) => console.log(error))
   }
 
 
   render() {
     return (
       <div>
-        <h1>Hello!!! This is react!!</h1>
+        <div id='header'>
+          <h1>Find your next Book</h1>
+        </div>
+        {this.state.modal ? <NewSearch />: null}
+
+        {this.state.books ? <div> + New Search </div>: null}
       </div>
     )
   }
