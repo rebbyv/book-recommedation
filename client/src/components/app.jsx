@@ -16,25 +16,13 @@ class App extends React.Component {
   searchBooks(params) {
     var url = 'https://www.googleapis.com/books/v1/volumes?q=';
     if (params.title) {
-      if (url[url.length - 1] === '=') {
-        url += `intitle:${params.title}`;
-      } else {
-        url += `+intitle:${params.title}`;
-      }
+      url += (url[url.length - 1] === '=') ? `intitle:${params.title}`: `+intitle:${params.title}`;
     } 
     if (params.author) {
-      if (url[url.length - 1] === '=') {
-        url += `inauthor:${params.author}`;
-      } else {
-        url += `+inauthor:${params.author}`;
-      }    
+      url += (url[url.length - 1] === '=') ? `inauthor:${params.author}`: `+inauthor:${params.author}`;    
     }
     if (params.subject) {
-      if (url[url.length - 1] === '=') {
-        url += `subject:${params.subject}`;
-      } else {
-        url += `+subject:${params.subject}`;
-      }    
+      url += (url[url.length - 1] === '=') ? `subject:${params.subject}`: `+subject:${params.subject}`;   
     }
     url += '&maxResults=40'
     fetch(url)
