@@ -1,3 +1,25 @@
+// import { useState } from "react";
+
+// var NewSearch = (props) => {
+//   const [param, setParam] = useState('author');
+//   const [queryCount, setQueryCount] = useState(1);
+
+//   return (
+//     <div id='modal'>
+//       <h4 onClick={() => this.closeModal()}> Close &times;</h4>
+//       <h2>Search by your interests or favorite author</h2>
+
+//       {queryCount < 3 ? <h4 onClick={() => setQueryCount(queryCount + 1)}>+ Add a search parameter</h4>: <h4></h4>}
+//       <Search changeParam={this.changeParam} changeEntry={this.changeEntry} key={1}/>
+//       {queryCount >= 2 ? <Search changeParam={this.changeParam} changeEntry={this.changeEntry}/>: null}
+//       {queryCount >= 3 ? <Search changeParam={this.changeParam} changeEntry={this.changeEntry}/>: null}
+
+//       {this.state.invalidSearch ? <p id='error-msg'>* Please enter at least 1 search parameter *</p>: null}
+//       <button onClick={() => this.search()}>Lookup Books</button>
+//     </div>
+//   ) 
+// }
+
 class NewSearch extends React.Component {
   constructor(props) {
     super(props);
@@ -58,10 +80,10 @@ class NewSearch extends React.Component {
         <h4 onClick={() => this.closeModal()}> Close &times;</h4>
         <h2>Search by your interests or favorite author</h2>
 
+        {this.state.queryCount < 3 ? <h4 onClick={() => this.addSearchParam()}>+ Add a search parameter</h4>: <h4></h4>}
         <Search changeParam={this.changeParam} changeEntry={this.changeEntry} key={1}/>
         {this.state.queryCount >= 2 ? <Search changeParam={this.changeParam} changeEntry={this.changeEntry}/>: null}
         {this.state.queryCount >= 3 ? <Search changeParam={this.changeParam} changeEntry={this.changeEntry}/>: null}
-        {this.state.queryCount < 3 ? <h4 onClick={() => this.addSearchParam()}>+ Add a search parameter</h4>: null}
   
         {this.state.invalidSearch ? <p id='error-msg'>* Please enter at least 1 search parameter *</p>:null}
         <button onClick={() => this.search()}>Lookup Books</button>

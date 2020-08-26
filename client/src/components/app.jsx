@@ -8,7 +8,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       books: null,
-      modal: true
+      modal: true,
+      book: null
     };
   }
   
@@ -35,6 +36,7 @@ class App extends React.Component {
         url += `+subject:${params.subject}`;
       }    
     }
+    url += '&maxResults=40'
     fetch(url)
     .then((res) => res.json())
     .then((data) => {
@@ -54,6 +56,14 @@ class App extends React.Component {
     this.setState({ modal: true })
   }
 
+  bookClick(book) {
+    this.setState({ book: book })
+  }
+
+  closeDetails() {
+    this.setState({ book: null })
+  }
+
 
   render() {
     return (
@@ -63,7 +73,8 @@ class App extends React.Component {
         </div>
         {this.state.books ? <div id='new-search' onClick={() => this.openModal()}> + New Search </div>: null}
         {this.state.modal ? <NewSearch searchBooks={this.searchBooks.bind(this)} close={this.closeModal.bind(this)}/>: null}
-        {this.state.books? <Books books={this.state.books}/>: null}
+        {this.state.books ? <Books books={this.state.books} bookClick={this.bookClick.bind(this)}/>: null}
+        {this.state.book ? <FullBookInfo book={this.state.books[this.state.book].volumeInfo} close={this.closeDetails.bind(this)}/>: null}
       </div>
     )
   }

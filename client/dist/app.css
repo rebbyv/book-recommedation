@@ -15,8 +15,8 @@ body {
   margin: 0px 0px;
   top: 0;
   left: 0;
-  position: absolute;
-  z-index: 1;
+  position: fixed;
+  z-index: 2;
 }
 
 h1 {
@@ -125,7 +125,11 @@ input {
 
 img {
   width: 175px;
-  height: auto;
+  height: 270px;
+}
+
+h3 {
+  font-size: 1.4em;
 }
 
 #new-search {
@@ -139,4 +143,50 @@ img {
 #new-search:hover {
   cursor: pointer;
   border: 2px solid #ff7c4c;
+}
+
+
+/* book details display */
+#details {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  left: 0;
+  top: 170px;
+  position: fixed;
+  background-color: #252525;
+  color: white;
+}
+
+#details-header {
+  width: 75%;
+  margin: auto;
+}
+
+h5 {
+  text-align: right;
+  font-size: 1.2em;
+}
+h5 {
+  cursor: pointer;
+}
+
+#details-body {
+  display: flex;
+  flex-direction: row;
+  width: 75%;
+  margin: auto;
+  justify-content: space-between;
+  padding-top: 25px;
+}
+
+#details-img {
+  width: 250px;
+  height: 350px;
+  padding-top: 25px;
+}
+
+#details-txt {
+  width: 75%;
+  font-size: 1.5em;
 }
