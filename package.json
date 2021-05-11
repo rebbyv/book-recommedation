@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack -d --watch",
-    "open": "google-chrome file:///home/rebbyv/Projects/book-recommedation/client/dist/index.html"
+    "build": "webpack --mode development --watch",
+    "start": "webpack serve --open ",
+    "build-TS": "tsc"
   },
   "repository": {
     "type": "git",
@@ -24,10 +25,18 @@
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
+    "loader-utils": "^2.0.0",
     "path": "^0.12.7",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "ts-loader": "^9.1.2",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.5",
+    "@types/react-dom": "^17.0.4",
+    "typescript": "^4.2.4",
+    "webpack-dev-server": "^3.11.2"
   }
 }

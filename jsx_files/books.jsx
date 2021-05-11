@@ -1,4 +1,4 @@
-import Book from './book.jsx';
+import Book from '../src/book.jsx';
 
 var Books = (props) => {
   return (

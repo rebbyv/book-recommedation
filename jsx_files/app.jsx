@@ -1,7 +1,7 @@
-import NewSearch from './newSearch.jsx';
-import Books from './books.jsx';
-import Book from './book.jsx';
-import FullBookInfo from './fullBookInfo.jsx';
+import NewSearch from '../src/newSearch.jsx';
+import Books from '../src/books.js';
+import Book from '../src/book.js';
+import FullBookInfo from '../src/fullBookInfo.jsx';
 
 class App extends React.Component {
   constructor(props) {
